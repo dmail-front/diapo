@@ -1,0 +1,68 @@
+<!doctype html>
+
+<html>
+
+<head>
+  <title>Simple diaporama</title>
+</head>
+
+<body>
+
+<div id="diapo">
+	<div class="item active" style="background-color: red">diapo1</div>
+	<div class="item" style="background-color: orange">diapo2</div>
+	<div class="item" style="background-color: yellow">diapo3</div>
+</div>
+
+<button id="prev">prev</button>
+<button id="next">next</button>
+
+<style>
+#diapo{
+	position: relative;
+	height: 50px;
+	white-space: nowrap;
+	font-size: 0;
+}
+
+#diapo .item{
+	font-size: 1.5rem;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	transition: 0.6s ease-in-out margin-left;
+}
+
+#diapo .item{
+	margin-left: -100%;
+}
+
+#diapo .item.active{
+	margin-left: 0;
+}
+
+#diapo .item.active+.item{
+	margin-left: 100%;
+}
+</style>
+
+<script>
+var diapo = document.getElementById('diapo');
+var index = 0;
+document.getElementById('next').onclick = function(){
+	if( index + 1 === diapo.children.length ) return;
+	diapo.children[index].classList.remove('active');
+	diapo.children[index + 1].classList.add('active');
+	index++;
+};
+document.getElementById('prev').onclick = function(){
+	if( index === 0 ) return;
+	diapo.children[index].classList.remove('active');
+	diapo.children[index - 1].classList.add('active');
+	index--;
+};
+</script>
+
+</body>
+
+</html>
