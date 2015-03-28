@@ -1,2 +1,2 @@
 # diapo
-Skeleton of a very simple diaporama
+A diaporama in 80 lines, no dependency
